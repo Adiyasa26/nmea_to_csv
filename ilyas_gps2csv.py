@@ -85,9 +85,6 @@ def automation_converter():
 
     FILE_IN_DATA_FOLDER = os.listdir(FOLDER_INPUT_NAME)
     FILE_IN_OUTPUT_FOLDER = os.listdir(FOLDER_OUTPUT_NAME)
-
-    print(FILE_IN_DATA_FOLDER)
-    print(FILE_IN_OUTPUT_FOLDER)
       
     # find exactly the filename with regex
     SEARCH_FILENAME = re.compile(r'[a-zA-Z]+([0-9]+(_[0-9]+)+)')
@@ -108,6 +105,8 @@ def automation_converter():
                     INPUT_FILENAME = FOLDER_INPUT_NAME + '/' + data
                     OUTPUT_FILENAME = FOLDER_OUTPUT_NAME + '/' + SEARCH_FILENAME.search(data).group() +'.csv'
                     converter_nmea_to_csv(INPUT_FILENAME, OUTPUT_FILENAME)
+    elif(len(FILE_IN_DATA_FOLDER) == 0 and len(FILE_IN_OUTPUT_FOLDER) == 0):
+        return False
     else:
        for data in FILE_IN_DATA_FOLDER:
             INPUT_FILENAME = FOLDER_INPUT_NAME + '/' + data
